@@ -1,0 +1,13 @@
+color = ''
+project-name = 'default'
+[default]
+account_id = 'acct_1QYBXKGrMZtk4b56'
+device_name = 'macbookpro.lan'
+display_name = 'Saad Osman'
+live_mode_api_key = 'rk_live_***********************************************************************************************X4xk'
+live_mode_key_expires_at = '2025-05-26'
+live_mode_pub_key = 'pk_live_51QYBXKGrMZtk4b56y3i8bd1cwAs37Wfpxo22pQyo3fR4jStFaoVn6DW1GyG6Jbh1OLKKLnmAR3dz7FeV0OcHFoMy006ChlkNXG'
+test_mode_api_key = 'rk_test_51QYBXKGrMZtk4b56b9RW4xMc0U99xwYhu0YlYwhjFrBqKU8syJd7CTEb7NeYDy1rP4cXXyhzkNrcvO2WS0ZR5Qaj00zBq37Yf5'
+test_mode_key_expires_at = '2025-05-26'
+test_mode_pub_key = 'pk_test_51QYBXKGrMZtk4b566BkcsZ66g0Dzt6XZAnxUmLyaoMUDJ8Cz15PNI4NdZsyjKxatfzuv5nO3yP4fClhpYztfyt3s00JnK6GaHX'
+
