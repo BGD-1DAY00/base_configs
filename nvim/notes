@@ -1,0 +1,93 @@
+
+Nvim + Tmux Notes: 
+- dummy comment	
+Nvim: 
+- d0:   delete from CURSOR -> beginning of word
+- r:  	replace char under CURSOR
+- ciw:	deletes word and enters insert mode
+- cw: 	chagnes CURSOR -> end of word
+- cc:   deletes line, enters insert mode
+- x:	delete char on CURSOR 
+- X:	delete char before CURSOR
+- dw:	delete CURSOR -> end of word
+- db:	delete CURSOR -> beginning of word
+- diw: 	delete inner word 
+- daw: 	delete a word + surrouding space
+- dd: 	delete line 
+- D:	delete CURSOR to end of line 
+-/{word}: search for a word below CURSOR
+-?{word}: search for a word above CURSOR
+-n: move between searches
+- :noh: remove the highlighting
+-w: move to beginning of next word
+-b: move to beginning of previous word
+-e: move to tend of curr or next word: 
+-ge: move to end of previous word
+-i: insert text before the CURSOR 
+-I: insert text at the beginning of the current line
+a: append text after the cursor 
+A: append text the end of the current line 
+o: open new line below current and in insert mode
+O: open a new line above teh currect and in insert mode 
+
+
+Things: 
+- vim objects: 
+	- vim has these objects that provide an interface for you to configure your setup, an example might be like vim.fn OR vim.api; We can look into the specific functionality exposed by each but it's all there
+	- vim has its own directories that faciliate alot of the operations in your code editor, such as..
+		- "data": /.local/share/nvim: manages plugins, databases, persistent state
+		- "config": /.config/nvim: your configuration files
+		- "cache": /.cache/nvim: temporary files
+		- "state": /.local/state/nvim: session info, command history
+
+- What is the diff between tree-sitter AND file explorer? 
+        - Tree-Sitter
+		- syntax highlighting (better colors for code) 
+		- code folding (collapse functions/classes) 
+		- smart text objects (select entire functions) 
+		- identation (smart auto-complete) 
+	- File Explorer: 
+		- sidebar file broswer like vscode file panel 
+		- visual directory tree
+		- file operations (create, delete, rename) 	
+	- Telescope: 
+		- find files by typing partial names
+		- search file contents
+		- find recent files, git files, etc
+
+things i'm adding as plugins: 
+- colorscheme 
+- telescope
+- tree-sitter
+- neo-tree
+
+
+Navigator: 
+- gg:	move to the top
+- G:	bottom of the navigator
+-5j:	move 5 down 
+-/{word} search for a given word in the file tree
+
+
+TMUX: 
+- Sessions: imagine a chrome instance
+- Windows: tabs in a session 
+- Panes: multiple tabs within a window (left/right split)
+- ctrl + b: enters the "command mode"	
+- ctrl + b -> c : create new session 
+- ctrl + b -> p : go previous window
+- ctrl + b -> (0,1,2,3): jump to window number 
+- ctrl + b -> w : list all windows 
+- ctrl + b -> , : rename current window
+- ctrl + b -> & : close current window 
+- ctrl + b -> % : new PANE vertically
+- ctrl + b -> q : new PANE horizontally 
+
+
+YABAI: 
+- alt + (h,j,k,l) : move betweeen apps on a screen 
+- alt + (1,2,3): move between screens
+- alt + shift + (1,2,3): move app to a screen 
+- alt + shift + (h,j,k,l): move an app to the left or right, etc
+
+

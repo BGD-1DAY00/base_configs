@@ -1,0 +1,67 @@
+yabai -m config layout bsp
+
+
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+# You can also use arrow keys instead
+alt - left  : yabai -m window --focus west
+alt - down  : yabai -m window --focus south
+alt - up    : yabai -m window --focus north
+alt - right : yabai -m window --focus east
+
+# Moving windows
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+# Resize windows
+ctrl + alt - h : yabai -m window --resize left:-50:0
+ctrl + alt - j : yabai -m window --resize bottom:0:50
+ctrl + alt - k : yabai -m window --resize top:0:-50
+ctrl + alt - l : yabai -m window --resize right:50:0
+
+
+# Focus display/monitor
+alt - 1 : yabai -m display --focus 1  # Focus first display
+alt - 2 : yabai -m display --focus 2  # Focus second display
+alt - 3 : yabai -m display --focus 3  # Focus third display
+
+# Move window to display and follow focus
+shift + alt - 1 : yabai -m window --display 1; yabai -m display --focus 1
+shift + alt - 2 : yabai -m window --display 2; yabai -m display --focus 2
+shift + alt - 3 : yabai -m window --display 3; yabai -m display --focus 3
+
+# Cycle through displays
+alt - tab : yabai -m display --focus next || yabai -m display --focus first
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          off
+yabai -m config window_placement             second_child
+yabai -m config window_shadow                on
+yabai -m config window_opacity               off
+yabai -m config window_opacity_duration      0.0
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.90
+yabai -m config window_topmost               on
+
+# window shadow level
+yabai -m config window_shadow_level          5
+yabai -m config active_window_shadow_level   5
+# general space settings
+yabai -m config layout                       bsp      # binary space partitioning
+yabai -m config top_padding                  2
+yabai -m config bottom_padding               2
+yabai -m config left_padding                 2
+yabai -m config right_padding                2
+yabai -m config window_gap                   2
+
+# apps to not manage (ignore)
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+
+
+yabai -m rule --add app="^Simulator$" manage=off layer=above
