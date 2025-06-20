@@ -10,9 +10,9 @@ return {
   lazy = false, -- neo-tree will lazily load itself
   keys = {
     -- Add keybinding to toggle neo-tree
-    { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+   --  { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
     -- Or use Ctrl+n if you prefer
-    -- { "<C-n>", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+     { "<C-n>", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
   },
   ---@module "neo-tree"
   ---@type neotree.Config?
@@ -24,6 +24,12 @@ return {
     window = {
 	    position = "left",
 	    window = 50, 
+	    mappings = {
+	      ["<leader>cr"] = "set_root",
+	      ["C"] = "set_root",
+	      ["<BS>"] = "navigate_up",
+	      ["."] = "set_root",
+	    },
     }, 
     enable_diagnostics = true,
     filesystem = {
