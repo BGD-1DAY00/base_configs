@@ -9,13 +9,23 @@ return {
   opts = {
     provider = "claude", -- or "openai"
     providers = {
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-sonnet-4-20250514",
+      gemini = {
+        endpoint = "https://generativelanguage.googleapis.com/v1beta",
+        model = "gemini-2.5-flash", -- or "gemini-pro"
+        api_key_name = "AIzaSyBPbSFoxEZlDXnEMoWtLW1VZ80BAEURfWI", -- Environment variable name
         timeout = 30000,
         extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 20480,
+          temperature = 0.3,
+          maxOutputTokens = 3072,
+        },
+      },
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-haiku-latest",
+        timeout = 30000,
+        extra_request_body = {
+          temperature = 0.3,
+          max_tokens = 3072,
         },
       },
       openai = {
@@ -23,8 +33,8 @@ return {
         model = "gpt-4o",
         timeout = 30000,
         extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 20480,
+          temperature = 0.3,
+          max_tokens = 3072,
         },
       },
     },

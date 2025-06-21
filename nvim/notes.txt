@@ -91,3 +91,75 @@ YABAI:
 - alt + shift + (h,j,k,l): move an app to the left or right, etc
 
 
+
+
+
+
+
+NEW Filter & Replace Stuff :COOL 
+
+	# Neovim Search and Replace Reference
+
+	## Search and Replace Commands
+	```vim
+	:%s/old/new/g           # Substitute (replace) - most common
+	:%g/pattern/d           # Global delete lines matching pattern
+	:%v/pattern/d           # Delete lines NOT matching pattern (inverse)
+	:%g/pattern/s/old/new/g # Replace only on lines matching pattern
+	```
+
+	## Search Commands
+	```vim
+	/pattern                # Search forward
+	?pattern                # Search backward
+	*                       # Search for word under cursor (forward)
+	#                       # Search for word under cursor (backward)
+	```
+
+	## Range Prefixes
+	```vim
+	%                       # Entire file
+	.                       # Current line
+	$                       # Last line
+	1,10                    # Lines 1 to 10
+	'<,'>                   # Visual selection
+	.,$                     # Current line to end of file
+	```
+
+	## Substitute Flags
+	```vim
+	/g                      # Global (all occurrences on line)
+	/c                      # Confirm each replacement
+	/i                      # Case insensitive
+	/I                      # Case sensitive
+	/n                      # Count matches (don't replace)
+	```
+
+	## Common Examples
+	```vim
+	:%s/old/new/gc          # Replace all with confirmation
+	:1,5s/old/new/g         # Replace in lines 1-5
+	:%g/TODO/d              # Delete all lines containing "TODO"
+	:%v/keep/d              # Delete all lines NOT containing "keep"
+	:g/function/s/old/new/g # Replace only in lines with "function"
+	:%s/\.75/\.3/g          # Replace .75 with .3 (escape the dot)
+	```
+
+	## Other Useful Commands
+	```vim
+	:%!sort                 # Sort entire file
+	:%!uniq                 # Remove duplicate lines
+	:retab                  # Fix indentation
+	```
+
+	## Quick Tips
+	- Use `\.` to match a literal period (dot)
+	- Combine commands with `|`: `:%s/old/new/g | %s/foo/bar/g`
+	- Press `n` to go to next search result, `N` for previous
+	- Use `:noh` to clear search highlighting
+
+	- `Ctrl+r` + `Ctrl+w` in command mode inserts word under cursor
+	:'<,'>s/old/new/gc      # Replace with confirmation in selection
+	:'<,'>g/pattern/d       # Delete lines matching pattern in selection
+	:'<,'>!sort             # Sort only selected lines
+	:'<,'>!column -t        # Format selected text as columns

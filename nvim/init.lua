@@ -12,3 +12,4 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↪ "
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'LSP Format' })	

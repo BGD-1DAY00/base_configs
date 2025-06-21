@@ -52,11 +52,11 @@ yabai -m config window_shadow_level          5
 yabai -m config active_window_shadow_level   5
 # general space settings
 yabai -m config layout                       bsp      # binary space partitioning
-yabai -m config top_padding                  2
-yabai -m config bottom_padding               2
-yabai -m config left_padding                 2
-yabai -m config right_padding                2
-yabai -m config window_gap                   2
+yabai -m config top_padding                  1
+yabai -m config bottom_padding               1
+yabai -m config left_padding                 1
+yabai -m config right_padding                1
+yabai -m config window_gap                   1
 
 # apps to not manage (ignore)
 yabai -m rule --add app="^System Settings$" manage=off
