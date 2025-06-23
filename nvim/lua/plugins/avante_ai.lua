@@ -12,7 +12,7 @@ return {
       gemini = {
         endpoint = "https://generativelanguage.googleapis.com/v1beta",
         model = "gemini-2.5-flash", -- or "gemini-pro"
-        api_key_name = "AIzaSyBPbSFoxEZlDXnEMoWtLW1VZ80BAEURfWI", -- Environment variable name
+        api_key_name = "ANTHROPIC_API_KEY", -- Environment variable name
         timeout = 30000,
         extra_request_body = {
           temperature = 0.3,
@@ -22,6 +22,7 @@ return {
       claude = {
         endpoint = "https://api.anthropic.com",
         model = "claude-3-5-haiku-latest",
+        api_key_name = "ANTHROPIC_API_KEY", -- Environment variable name
         timeout = 30000,
         extra_request_body = {
           temperature = 0.3,
