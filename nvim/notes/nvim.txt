@@ -163,3 +163,4 @@ NEW Filter & Replace Stuff :COOL
 	:'<,'>g/pattern/d       # Delete lines matching pattern in selection
 	:'<,'>!sort             # Sort only selected lines
 	:'<,'>!column -t        # Format selected text as columns
+
