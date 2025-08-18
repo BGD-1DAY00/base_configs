@@ -70,7 +70,21 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search history)
+# plugins=(git)
+plugins=(
+  git                # Git integration and aliases
+  z                  # Jump to directories based on frequency/recency
+  zsh-autosuggestions # Fish-like autosuggestions
+  zsh-syntax-highlighting # Syntax highlighting for commands
+  web-search         # Enables 'google' command for web searches
+  history            # History command enhancements
+  docker             # Docker commands completion and aliases
+  colored-man-pages  # Adds colors to man pages
+  extract            # 'x' command to extract archives
+  command-not-found  # Suggests packages for missing commands
+  copypath           # Copy current directory path to clipboard
+  dirhistory         # Navigation with Alt+Left/Right/Up
+)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -101,13 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+export GEMINI_API_KEY=AIzaSyC3NkQN4gDIID18vGRR9V5OLBjUD08roFg 
+export PATH="/Users/saadosman/.bun/bin:$PATH"
 
-# Enable tab completion
-autoload -Uz compinit
-compinit
-
-# Enable menu-style completion
-zstyle ':completion:*' menu select
-
-# Make completion case-insensitive
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

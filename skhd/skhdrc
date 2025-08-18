@@ -35,4 +35,13 @@ shift + alt - 3 : yabai -m window --display 3; yabai -m display --focus 3
 # Cycle through displays
 alt - tab : yabai -m display --focus next || yabai -m display --focus first
 
+# Toggle fullscreen
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# Balance/equalize all windows
+shift + alt - 0 : yabai -m space --balance
+
+# Toggle split orientation
+shift + alt - space : yabai -m window --toggle split
+
 

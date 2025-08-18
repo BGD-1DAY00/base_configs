@@ -64,4 +64,4 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 
 
-yabai -m rule --add app="^Simulator$" manage=off layer=above
+yabai -m rule --add app="^Simulator$" manage=off

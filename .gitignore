@@ -1,5 +1,4 @@
 stripe/*
 git_password.txt
 anthropic_key.txt 
-
-
+.secrets.txt
