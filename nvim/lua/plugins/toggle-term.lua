@@ -29,10 +29,17 @@ return {
 					background = "Normal",
 				},
 			},
+			-- Add winbar to show terminal names
+			winbar = {
+				enabled = true,
+				name_formatter = function(term)
+					return term.name or "Terminal " .. term.id
+				end
+			},
 		})
 
-		-- Terminal mode keymaps (FIX: underscores not asterisks!)
-		function _G.set_terminal_keymaps() -- <- Fixed here
+		-- Terminal mode keymaps (FIXED: underscores not asterisks!)
+		function _G.set_terminal_keymaps()
 			local opts = { buffer = 0 }
 			vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
 			vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
@@ -46,14 +53,55 @@ return {
 		-- Apply keymaps to each terminal buffer
 		vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
 
-		-- Your existing mappings
-		vim.keymap.set('n', '<leader>t1', '<cmd>1ToggleTerm<cr>', { desc = 'Terminal 1' })
-		vim.keymap.set('n', '<leader>t2', '<cmd>2ToggleTerm<cr>', { desc = 'Terminal 2' })
-		vim.keymap.set('n', '<leader>t3', '<cmd>3ToggleTerm<cr>', { desc = 'Terminal 3' })
-		vim.keymap.set('n', '<leader>t4', '<cmd>4ToggleTerm<cr>', { desc = 'Terminal 4' })
-		vim.keymap.set('n', '<leader>tt', '<cmd>TermSelect<cr>', { desc = 'Select Terminal' })
+		-- Allow count with C-\ for unlimited terminals (e.g., 15<C-\> opens terminal 15)
+		vim.keymap.set('n', '<C-\\>', function()
+			local count = vim.v.count
+			if count == 0 then count = 1 end
+			vim.cmd(count .. 'ToggleTerm')
+		end, { desc = 'Toggle Terminal with Count' })
 
-		-- Add direction-specific shortcuts
+		-- Create numbered mappings for terminals 1-9
+		for i = 1, 9 do
+			vim.keymap.set('n', '<leader>t' .. i, '<cmd>' .. i .. 'ToggleTerm<cr>',
+				{ desc = 'Terminal ' .. i })
+		end
+
+		-- Smart terminal selector - opens terminal 1 if none exist, otherwise shows list
+		vim.keymap.set('n', '<leader>tt', function()
+			local terminals = require("toggleterm.terminal").get_all()
+			if #terminals == 0 then
+				vim.cmd('1ToggleTerm')
+			else
+				vim.cmd('TermSelect')
+			end
+		end, { desc = 'Select/Open Terminal' })
+
+		-- Create NEW terminal with next available number
+		vim.keymap.set('n', '<leader>tn', function()
+			local terminals = require("toggleterm.terminal").get_all()
+			local next_id = #terminals + 1
+			vim.cmd(next_id .. 'ToggleTerm')
+		end, { desc = 'New Terminal' })
+
+		-- Open terminal by number (prompts for any number)
+		vim.keymap.set('n', '<leader>to', function()
+			vim.ui.input({ prompt = 'Terminal number: ' }, function(num)
+				if num and tonumber(num) then
+					vim.cmd(num .. 'ToggleTerm')
+				end
+			end)
+		end, { desc = 'Open Terminal by Number' })
+
+		-- Name current terminal (simple prompt)
+		vim.keymap.set('n', '<leader>tr', function()
+			vim.ui.input({ prompt = 'Name for this terminal: ' }, function(name)
+				if name and name ~= '' then
+					vim.cmd('ToggleTermSetName ' .. name)
+				end
+			end)
+		end, { desc = 'Rename Current Terminal' })
+
+		-- Direction-specific shortcuts
 		vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm direction=vertical<cr>',
 			{ desc = 'Vertical Terminal' })
 		vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<cr>',

@@ -1,121 +1,153 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# ==========================================
+# PATH Configuration
+# ==========================================
+# Add custom bin directories to PATH
+export PATH=$HOME/.config/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# ==========================================
+# Oh My Zsh Configuration
+# ==========================================
+# Path to your Oh My Zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Theme (robbyrussell is clean and fast)
 ZSH_THEME="robbyrussell"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ==========================================
+# Oh My Zsh Settings (Optimized)
+# ==========================================
+# Auto-update without asking (keeps tools current)
+zstyle ':omz:update' mode auto
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# How often to auto-update (in days)
+zstyle ':omz:update' frequency 13
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# Enable command auto-correction (suggests fixes for typos)
+ENABLE_CORRECTION="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Show dots while waiting for completion
+COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# Show timestamps in history (useful for debugging)
+HIST_STAMPS="yyyy-mm-dd"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Speed up git status in large repositories (uncomment if needed)
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
+# ==========================================
+# Plugins
+# ==========================================
 plugins=(
-  git                # Git integration and aliases
-  z                  # Jump to directories based on frequency/recency
-  zsh-autosuggestions # Fish-like autosuggestions
+  git                      # Git integration and aliases
+  z                       # Jump to directories based on frequency/recency
+  zsh-autosuggestions     # Fish-like autosuggestions
   zsh-syntax-highlighting # Syntax highlighting for commands
-  web-search         # Enables 'google' command for web searches
-  history            # History command enhancements
-  docker             # Docker commands completion and aliases
-  colored-man-pages  # Adds colors to man pages
-  extract            # 'x' command to extract archives
-  command-not-found  # Suggests packages for missing commands
-  copypath           # Copy current directory path to clipboard
-  dirhistory         # Navigation with Alt+Left/Right/Up
+  web-search              # Enables 'google' command for web searches
+  history                 # History command enhancements
+  docker                  # Docker commands completion and aliases
+  colored-man-pages       # Adds colors to man pages
+  extract                 # 'x' command to extract archives
+  command-not-found       # Suggests packages for missing commands
+  copypath                # Copy current directory path to clipboard
+  dirhistory              # Navigation with Alt+Left/Right/Up
+  zsh-autocomplete
 )
+
+# Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
+# ==========================================
+# User Configuration
+# ==========================================
+# Language environment
+export LANG=en_US.UTF-8
 
-# User configuration
+# Preferred editor (change 'code' to 'vim' or 'nvim' if preferred)
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'  # Use vim when SSHing
+else
+  export EDITOR='nvim' # Use VS Code locally
+fi
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-export GEMINI_API_KEY=AIzaSyC3NkQN4gDIID18vGRR9V5OLBjUD08roFg 
+# ==========================================
+# Development Tools
+# ==========================================
+# Bun
 export PATH="/Users/saadosman/.bun/bin:$PATH"
 
+# ==========================================
+# API Keys and Secrets
+# ==========================================
+# Source secrets file if it exists (more secure than inline keys)
+if [ -f ~/.config/secrets.zsh ]; then
+  source ~/.config/secrets.zsh
+else
+  # Fallback (consider moving to ~/.config/secrets.zsh)
+  export GEMINI_API_KEY=AIzaSyC3NkQN4gDIID18vGRR9V5OLBjUD08roFg
+fi
+
+# ==========================================
+# Helpful Aliases
+# ==========================================
+# Git shortcuts
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gpl='git pull'
+alias gco='git checkout'
+alias gb='git branch'
+alias glog='git log --oneline --graph --decorate'
+
+# Directory navigation
+alias ll='ls -alh'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Quick edits
+alias zshconfig='$EDITOR ~/.zshrc'
+alias ohmyzsh='$EDITOR ~/.oh-my-zsh'
+alias reload='source ~/.zshrc'
+
+# Safety nets
+alias rm='rm -i'  # Confirm before removing
+alias cp='cp -i'  # Confirm before overwriting
+alias mv='mv -i'  # Confirm before overwriting
+
+# Shortcuts
+alias h='history'
+alias c='clear'
+alias code.='code .'
+
+# Show/hide hidden files in Finder (macOS)
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
+
+# IP addresses
+alias ip='curl -s ifconfig.me'
+alias localip='ipconfig getifaddr en0'
+
+# ==========================================
+# Custom Functions
+# ==========================================
+# Create directory and cd into it
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Search history
+hgrep() {
+    history | grep "$1"
+}
+
+
+# Quick backup of a file
+backup() {
+    cp "$1" "$1.backup-$(date +%Y%m%d-%H%M%S)"
+}
+
+# ==========================================
+# End of .zshrc
+# ==========================================
