@@ -71,8 +71,17 @@ fi
 # ==========================================
 # Development Tools
 # ==========================================
+#
 # Bun
 export PATH="/Users/saadosman/.bun/bin:$PATH"
+
+# Android Development Commands
+# Source Android-specific commands from separate file
+if [ -f ~/.config/zsh/android-commands.zsh ]; then
+    source ~/.config/zsh/android-commands.zsh
+fi
+
+source ~/.config/zsh/java.zsh
 
 # ==========================================
 # API Keys and Secrets
@@ -84,6 +93,7 @@ else
   # Fallback (consider moving to ~/.config/secrets.zsh)
   export GEMINI_API_KEY=AIzaSyC3NkQN4gDIID18vGRR9V5OLBjUD08roFg
 fi
+
 
 # ==========================================
 # Helpful Aliases
